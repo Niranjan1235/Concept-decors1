@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Projects & Portfolio – Concept Decors</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --dark:#080705;
+  --dark-2:#0e0c09;
+  --dark-3:#151210;
+  --dark-4:#1c1914;
+  --gold:#c8972a;
+  --gold-2:#e8b84b;
+  --gold-3:#f5d47a;
+  --muted:rgba(255,255,255,.38);
+  --muted-2:rgba(255,255,255,.55);
+  --border:rgba(200,151,42,.13);
+  --grad-gold:linear-gradient(135deg,#c8972a,#f5d47a,#c8972a);
+  --ff-serif:'Cormorant Garamond',Georgia,serif;
+  --ff-sans:'Jost','Helvetica Neue',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{background:var(--dark);color:#fff;font-family:var(--ff-sans);}
+img{display:block;max-width:100%;object-fit:cover;}
+a{color:inherit;text-decoration:none;}
+button{font-family:var(--ff-sans);cursor:pointer;border:none;background:none;}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:76px;
+  background:rgba(8,7,5,.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+#nav.solid{background:rgba(8,7,5,.98);}
+.nav-logo{display:flex;align-items:center;gap:14px;}
+.nav-logo-diamond{
+  width:12px;height:12px;background:var(--gold);
+  transform:rotate(45deg);flex-shrink:0;
+}
+.nav-logo-name{
+  font-family:var(--ff-serif);font-size:1.15rem;font-weight:500;letter-spacing:.04em;
+}
+.nav-logo-sub{font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:1px;}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;}
+.nav-links a{
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:9px 16px;color:var(--muted-2);
+  transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-cta{
+  background:transparent;border:1px solid rgba(200,151,42,.5);
+  color:var(--gold)!important;padding:8px 22px!important;
+  transition:background .2s,border-color .2s!important;
+}
+.nav-cta:hover{background:rgba(200,151,42,.1)!important;border-color:var(--gold)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:#fff;transition:.3s;}
+.mob-menu{
+  display:none;position:fixed;inset:0;z-index:850;
+  background:var(--dark-2);padding:100px 8% 60px;
+  flex-direction:column;gap:0;
+}
+.mob-menu a{
+  font-family:var(--ff-serif);font-size:2.2rem;font-weight:300;
+  padding:18px 0;border-bottom:1px solid var(--border);
+  color:rgba(255,255,255,.7);transition:color .2s;
+}
+.mob-menu a:hover{color:#fff;}
+.mob-menu.open{display:flex;}
+.mob-cta-btn{
+  margin-top:32px;background:var(--gold);
+  color:var(--dark)!important;font-size:.7rem!important;
+  font-family:var(--ff-sans)!important;letter-spacing:.2em;
+  text-transform:uppercase;padding:16px 32px!important;
+  text-align:center;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.page-hero{
+  position:relative;min-height:72vh;padding-top:76px;
+  display:flex;align-items:flex-end;overflow:hidden;
+  background:#080705;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90&auto=format&fit=crop') center/cover no-repeat;
+  transform:scale(1.06);animation:heroZoom 16s ease-out forwards;
+}
+@keyframes heroZoom{to{transform:scale(1);}}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(8,7,5,1) 0%, rgba(8,7,5,.75) 50%, rgba(8,7,5,.4) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 5% 80px;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;
+}
+.hero-left{}
+.gold-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-2);margin-bottom:24px;
+}
+.gold-tag::before{content:'';width:28px;height:1px;background:var(--gold);}
+.hero-title{
+  font-family:var(--ff-serif);
+  font-size:clamp(3rem,6vw,5.2rem);
+  font-weight:300;line-height:1.0;letter-spacing:-.01em;
+}
+.hero-title em{font-style:italic;font-weight:300;color:var(--gold-2);}
+.hero-right{padding-bottom:8px;}
+.hero-sub{
+  font-size:.82rem;color:var(--muted);line-height:1.9;
+  max-width:380px;margin-bottom:32px;
+}
+.hero-stats{display:flex;gap:40px;}
+.hs-num{
+  font-family:var(--ff-serif);font-size:2rem;font-weight:400;
+  background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;
+}
+.hs-lbl{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:5px;}
+
+/* scroll cue */
+.scroll-cue{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3;
+  animation:fadeIn 1.2s 1s both;
+}
+.sc-line{width:1px;height:48px;background:rgba(200,151,42,.3);position:relative;overflow:hidden;}
+.sc-line::after{
+  content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;
+  background:var(--gold);animation:scPulse 1.8s ease-in-out infinite;
+}
+@keyframes scPulse{0%{top:-100%;}100%{top:200%;}}
+.sc-txt{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════ */
+.reveal{
+  opacity:0;transform:translateY(36px);
+  transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible{opacity:1;transform:none;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ═══════════════════════════════════════════
+   SECTION SHARED
+═══════════════════════════════════════════ */
+.section-title{
+  font-family:var(--ff-serif);
+  font-size:clamp(2.2rem,4.5vw,3.6rem);
+  font-weight:300;line-height:1.06;letter-spacing:-.01em;
+}
+.section-title em{font-style:italic;color:var(--gold-2);}
+.section-sub{
+  font-size:.8rem;color:var(--muted);line-height:1.9;max-width:520px;margin-top:16px;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES ICONS
+═══════════════════════════════════════════ */
+#services{padding:100px 5%;background:var(--dark-2);}
+.srv-header{margin-bottom:70px;}
+.srv-header .section-sub{max-width:460px;}
+.srv-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:2px;
+}
+.srv-card{
+  background:var(--dark-3);
+  padding:36px 24px 32px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:0;
+  cursor:default;
+  transition:background .3s;
+  position:relative;overflow:hidden;
+}
+.srv-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--grad-gold);transform:scaleX(0);transition:transform .4s cubic-bezier(.22,1,.36,1);
+  transform-origin:left;
+}
+.srv-card:hover{background:var(--dark-4);}
+.srv-card:hover::before{transform:scaleX(1);}
+.srv-icon{
+  width:56px;height:56px;margin-bottom:18px;
+  border:1px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .3s,background .3s;
+}
+.srv-card:hover .srv-icon{border-color:rgba(200,151,42,.5);background:rgba(200,151,42,.07);}
+.srv-icon svg{width:24px;height:24px;stroke:var(--gold-2);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+.srv-name{
+  font-family:var(--ff-serif);font-size:.95rem;font-weight:400;
+  margin-bottom:8px;color:#fff;letter-spacing:.01em;
+}
+.srv-desc{font-size:.63rem;color:var(--muted);line-height:1.75;letter-spacing:.02em;}
+
+/* ═══════════════════════════════════════════
+   MARQUEE FLOW TEXT
+═══════════════════════════════════════════ */
+.marquee-wrap{
+  overflow:hidden;background:var(--dark);
+  padding:22px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.marquee-track{
+  display:flex;width:max-content;
+  animation:marquee 32s linear infinite;
+}
+.marquee-track:hover{animation-play-state:paused;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.mq-item{
+  font-family:var(--ff-serif);font-size:1.1rem;font-weight:300;font-style:italic;
+  color:rgba(255,255,255,.3);
+  padding:0 36px;border-right:1px solid rgba(200,151,42,.15);
+  white-space:nowrap;
+}
+.mq-item .mq-dot{color:var(--gold);font-style:normal;}
+
+/* ═══════════════════════════════════════════
+   FEATURED PROJECTS (3 cards)
+═══════════════════════════════════════════ */
+#featured{padding:100px 5%;background:var(--dark);}
+.feat-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:56px;
+}
+.feat-header .right{text-align:right;}
+.view-all-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);border-bottom:1px solid rgba(200,151,42,.35);
+  padding-bottom:3px;transition:gap .3s,border-color .3s;
+}
+.view-all-btn:hover{gap:16px;border-color:var(--gold);}
+.feat-grid{display:grid;grid-template-columns:1.45fr 1fr 1fr;gap:3px;}
+
+.feat-card{
+  position:relative;overflow:hidden;cursor:pointer;
+  background:var(--dark-3);
+}
+.feat-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .85s cubic-bezier(.25,.46,.45,.94);
+}
+.feat-card:nth-child(1) img{min-height:560px;}
+.feat-card:nth-child(2) img,.feat-card:nth-child(3) img{min-height:275px;}
+.feat-card:hover img{transform:scale(1.08);}
+
+.feat-card-inner{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px 26px;
+  background:linear-gradient(to top,rgba(8,7,5,.92) 0%,rgba(8,7,5,.15) 55%,transparent 100%);
+}
+.feat-cat{
+  font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:7px;
+}
+.feat-name{
+  font-family:var(--ff-serif);font-size:1.35rem;font-weight:400;
+  margin-bottom:4px;line-height:1.15;
+}
+.feat-card:nth-child(1) .feat-name{font-size:1.9rem;}
+.feat-meta{font-size:.62rem;color:rgba(255,255,255,.4);margin-bottom:14px;}
+.feat-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-2);
+  opacity:0;transform:translateY(8px);
+  transition:opacity .35s,transform .35s,gap .3s;
+}
+.feat-card:hover .feat-link{opacity:1;transform:none;}
+.feat-link:hover{gap:14px;}
+
+/* right column stacks 2 */
+.feat-col-right{display:flex;flex-direction:column;gap:3px;}
+
+/* ═══════════════════════════════════════════
+   DESIGN PORTFOLIO
+═══════════════════════════════════════════ */
+#design-portfolio{padding:100px 5%;background:var(--dark-2);}
+.dp-header{text-align:center;margin-bottom:64px;}
+.dp-header .section-sub{margin:12px auto 0;text-align:center;}
+.dp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.dp-item{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;}
+.dp-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94);}
+.dp-item:hover img{transform:scale(1.1);}
+.dp-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,7,5,.9) 0%,transparent 60%);
+  opacity:0;transition:opacity .4s;
+}
+.dp-item:hover .dp-overlay{opacity:1;}
+.dp-label{
+  position:absolute;bottom:0;left:0;right:0;padding:20px 18px;
+  transform:translateY(6px);transition:transform .4s;
+}
+.dp-item:hover .dp-label{transform:translateY(0);}
+.dp-lcat{font-size:.52rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.dp-lname{font-family:var(--ff-serif);font-size:1.05rem;font-weight:400;color:#fff;}
+
+/* ═══════════════════════════════════════════
+   MATERIALS
+═══════════════════════════════════════════ */
+#materials{padding:100px 5%;background:var(--dark);}
+.mat-header{margin-bottom:64px;}
+.mat-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.mat-left{}
+.mat-list{margin-top:48px;display:flex;flex-direction:column;gap:0;}
+.mat-row{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:22px 0;border-bottom:1px solid rgba(255,255,255,.06);
+  cursor:default;transition:background .25s;
+}
+.mat-row:first-child{border-top:1px solid rgba(255,255,255,.06);}
+.mat-row:hover{padding-left:8px;}
+.mat-row-icon{
+  width:42px;height:42px;border-radius:6px;
+  background:rgba(200,151,42,.08);border:1px solid rgba(200,151,42,.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background .3s;
+}
+.mat-row:hover .mat-row-icon{background:rgba(200,151,42,.14);}
+.mat-row-icon svg{width:18px;height:18px;stroke:var(--gold-2);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+.mat-row-body{}
+.mat-row-name{font-size:.82rem;font-weight:500;margin-bottom:4px;color:rgba(255,255,255,.88);}
+.mat-row-brands{font-size:.68rem;color:var(--muted);line-height:1.6;}
+.mat-right{}
+.mat-img-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;height:520px;}
+.mat-img{overflow:hidden;}
+.mat-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s;}
+.mat-img:hover img{transform:scale(1.06);}
+.mat-img.tall{grid-row:span 2;}
+.mat-cap{
+  padding:12px 14px;background:var(--dark-3);
+  font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ═══════════════════════════════════════════
+   PACKAGES
+═══════════════════════════════════════════ */
+#packages{padding:100px 5%;background:var(--dark-2);}
+.pkg-header{text-align:center;margin-bottom:72px;}
+.pkg-header .section-sub{margin:12px auto 0;text-align:center;}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.pkg-card{
+  background:var(--dark-3);
+  padding:52px 40px 48px;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+  border:1px solid transparent;
+}
+.pkg-card.featured{
+  background:var(--dark-4);
+  border-color:rgba(200,151,42,.25);
+}
+.pkg-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:transparent;transition:background .3s;
+}
+.pkg-card.featured::before,.pkg-card:hover::before{background:var(--grad-gold);}
+.pkg-badge{
+  display:inline-block;font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;
+  padding:5px 14px;border:1px solid rgba(200,151,42,.4);
+  color:var(--gold);margin-bottom:32px;
+}
+.pkg-card.featured .pkg-badge{background:rgba(200,151,42,.1);}
+.pkg-name{font-family:var(--ff-serif);font-size:1.8rem;font-weight:300;margin-bottom:6px;}
+.pkg-sub{font-size:.68rem;color:var(--muted);margin-bottom:32px;letter-spacing:.04em;}
+.pkg-price{
+  font-family:var(--ff-serif);font-size:2.6rem;font-weight:300;
+  background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;margin-bottom:6px;
+}
+.pkg-unit{font-size:.62rem;color:var(--muted);letter-spacing:.12em;margin-bottom:36px;}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:44px;}
+.pkg-features li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:.72rem;color:rgba(255,255,255,.7);line-height:1.6;
+}
+.pkg-features li::before{
+  content:'';display:block;width:14px;height:14px;border-radius:50%;
+  border:1px solid rgba(200,151,42,.45);flex-shrink:0;margin-top:2px;
+  background:radial-gradient(circle at 50% 50%, rgba(200,151,42,.2), transparent 70%);
+}
+.pkg-cta{
+  width:100%;padding:14px;
+  border:1px solid rgba(200,151,42,.35);
+  color:var(--gold-2);
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:background .25s,border-color .25s,color .25s;
+}
+.pkg-cta:hover,.pkg-card.featured .pkg-cta{
+  background:rgba(200,151,42,.12);border-color:var(--gold);color:var(--gold-3);
+}
+
+/* ═══════════════════════════════════════════
+   STATS
+═══════════════════════════════════════════ */
+#proj-stats{padding:0;background:var(--dark);}
+.ps-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.ps-item{
+  padding:52px 20px;text-align:center;
+  border-right:1px solid var(--border);
+  transition:background .3s;
+}
+.ps-item:last-child{border-right:none;}
+.ps-item:hover{background:rgba(200,151,42,.04);}
+.ps-num{
+  font-family:var(--ff-serif);font-size:2.8rem;font-weight:400;
+  background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;
+}
+.ps-lbl{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:10px;}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.site-footer{background:var(--dark-2);padding:80px 5% 0;border-top:1px solid var(--border);}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:60px;border-bottom:1px solid var(--border);}
+.ft-logo-wrap{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.ft-logo-name-text{font-family:var(--ff-serif);font-size:1.1rem;font-weight:500;}
+.ft-logo-city{font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.ft-desc{font-size:.73rem;color:var(--muted);line-height:1.85;max-width:260px;margin-bottom:24px;}
+.ft-socials{display:flex;gap:8px;}
+.ft-soc{
+  width:34px;height:34px;border:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;letter-spacing:.05em;color:var(--muted);
+  transition:border-color .2s,color .2s;
+}
+.ft-soc:hover{border-color:var(--gold);color:var(--gold);}
+.ft-col h4{font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.ft-col a{font-size:.75rem;color:rgba(255,255,255,.5);transition:color .2s;}
+.ft-col a:hover{color:#fff;}
+.ft-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;font-size:.6rem;color:var(--muted);
+}
+.ft-legal{display:flex;gap:24px;}
+.ft-legal a:hover{color:#fff;}
+
+/* ═══════════════════════════════════════════
+   STICKY ICONS
+═══════════════════════════════════════════ */
+.sticky-icons{
+  position:fixed;bottom:32px;right:24px;z-index:800;
+  display:flex;flex-direction:column;gap:10px;
+}
+.si-item{
+  display:flex;align-items:center;gap:0;
+  overflow:hidden;
+  border-radius:28px;
+  transition:width .3s cubic-bezier(.22,1,.36,1);
+  width:44px;
+}
+.si-item:hover{width:140px;}
+.si-icon-box{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.si-icon-box svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.si-wa .si-icon-box{background:#25D366;}
+.si-ph .si-icon-box{background:var(--dark-4);border:1px solid var(--border);}
+.si-label{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;white-space:nowrap;padding:0 14px 0 6px;opacity:0;transition:opacity .3s .1s;}
+.si-item:hover .si-label{opacity:1;}
+.si-wa{background:#25D366;}
+.si-ph{background:var(--dark-4);border:1px solid var(--border);}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:1100px){
+  .srv-grid{grid-template-columns:repeat(3,1fr);}
+  .pkg-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;}
+  .feat-grid{grid-template-columns:1fr!important;}
+  .feat-col-right{flex-direction:row;}
+  .feat-card:nth-child(1) img,.feat-card:nth-child(2) img,.feat-card:nth-child(3) img{min-height:280px;}
+  .dp-grid{grid-template-columns:1fr 1fr;}
+  .mat-layout{grid-template-columns:1fr;}
+  .mat-img-grid{height:320px;}
+  .ps-grid{grid-template-columns:1fr 1fr 1fr;}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:40px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+}
+@media(max-width:680px){
+  .srv-grid{grid-template-columns:repeat(2,1fr);}
+  .dp-grid{grid-template-columns:1fr;}
+  .pkg-grid{grid-template-columns:1fr;}
+  .ps-grid{grid-template-columns:1fr 1fr;}
+  .ft-grid{grid-template-columns:1fr;}
+  .hero-stats{flex-wrap:wrap;gap:24px;}
+  .feat-col-right{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-diamond"></div>
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">Concept Decors</div>
+      <div class="nav-logo-sub">Luxury Interiors · Bengaluru</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="factory.html">Factory</a></li>
+    <li><a href="team.html">Our Team</a></li>
+    <li><a href="index.html#contact-footer" class="nav-cta">Book Consultation</a></li>
+  </ul>
+  <div class="hamburger" id="ham" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mob-menu" id="mob-menu">
+  <a href="index (11).html" onclick="toggleMenu()">Home</a>
+  <a href="projects.html" class="active" onclick="toggleMenu()">Projects</a>
+  <a href="factory_black.html" onclick="toggleMenu()">Factory</a>
+  
+  <a href="index.html#contact-footer" class="mob-cta-btn" onclick="toggleMenu()">Book Consultation</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="gold-tag reveal">Our Portfolio</div>
+      <h1 class="section-title reveal" style="transition-delay:.1s">
+        500+ Projects,<br>One <em>Standard<br>of Excellence</em>
+      </h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-sub reveal" style="transition-delay:.2s">
+        From intimate apartments to sprawling villas, every project is a distinct expression of our craft — designed to live beautifully for decades.
+      </p>
+      <div class="hero-stats reveal" style="transition-delay:.3s">
+        <div><div class="hs-num">500+</div><div class="hs-lbl">Projects Done</div></div>
+        <div><div class="hs-num">12yr</div><div class="hs-lbl">In Business</div></div>
+        <div><div class="hs-num">4.9★</div><div class="hs-lbl">Google Rating</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <div class="sc-txt">Scroll</div>
+    <div class="sc-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mq-item">Living Room Design <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Modular Kitchens <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Bedroom Interiors <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Luxury Bathrooms <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Commercial Spaces <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Custom Furniture <span class="mq-dot">✦</span></span>
+    <span class="mq-item">False Ceilings & Lighting <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Hospitality Design <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Living Room Design <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Modular Kitchens <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Bedroom Interiors <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Luxury Bathrooms <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Commercial Spaces <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Custom Furniture <span class="mq-dot">✦</span></span>
+    <span class="mq-item">False Ceilings & Lighting <span class="mq-dot">✦</span></span>
+    <span class="mq-item">Hospitality Design <span class="mq-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- SERVICES ICONS -->
+<section id="services">
+  <div class="srv-header reveal">
+    <div class="gold-tag">What We Design</div>
+    <h2 class="section-title">Every Space, <em>Perfectly Crafted</em></h2>
+    <p class="section-sub">We bring expertise across every room and space type — from intimate bedrooms to sprawling commercial complexes.</p>
+  </div>
+  <div class="srv-grid">
+
+    <!-- Bedroom -->
+    <div class="srv-card reveal">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 9V19M22 9V19M2 14H22M6 9V7A2 2 0 0 1 8 5H16A2 2 0 0 1 18 7V9"/><rect x="4" y="9" width="16" height="5" rx="1"/></svg>
+      </div>
+      <div class="srv-name">Bedroom Design</div>
+      <div class="srv-desc">Custom wardrobes, beds, ambient lighting & complete bedroom transformations</div>
+    </div>
+
+    <!-- Kitchen -->
+    <div class="srv-card reveal" style="transition-delay:.06s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="5" rx="1"/><path d="M4 9V19A1 1 0 0 0 5 20H19A1 1 0 0 0 20 19V9"/><circle cx="8.5" cy="14.5" r="1.5"/><circle cx="12" cy="14.5" r="1.5"/><circle cx="15.5" cy="14.5" r="1.5"/></svg>
+      </div>
+      <div class="srv-name">Modular Kitchen</div>
+      <div class="srv-desc">L-shaped, U-shaped, island kitchens with premium fittings & smart storage</div>
+    </div>
+
+    <!-- Living Room -->
+    <div class="srv-card reveal" style="transition-delay:.12s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="10" width="8" height="8" rx="2"/><rect x="14" y="10" width="8" height="8" rx="2"/><path d="M6 10V7A2 2 0 0 1 8 5H16A2 2 0 0 1 18 7V10M8 18V21M16 18V21M2 14H22"/></svg>
+      </div>
+      <div class="srv-name">Living Room</div>
+      <div class="srv-desc">Sofa arrangements, feature walls, TV units, décor & lighting design</div>
+    </div>
+
+    <!-- Bathroom -->
+    <div class="srv-card reveal" style="transition-delay:.18s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M5 12H19V18A3 3 0 0 1 16 21H8A3 3 0 0 1 5 18V12Z"/><path d="M5 12V7A3 3 0 0 1 8 4H9A1 1 0 0 1 10 5V12"/><path d="M9 21H7M15 21H17"/></svg>
+      </div>
+      <div class="srv-name">Luxury Bathroom</div>
+      <div class="srv-desc">Spa-inspired bathrooms with Italian tiles, vanities & designer sanitaryware</div>
+    </div>
+
+    <!-- Dining -->
+    <div class="srv-card reveal" style="transition-delay:.24s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 11H21M12 3V21M3 7V21M21 7V21"/><path d="M8 3C8 3 8 7 5 7M16 3C16 3 16 7 19 7"/></svg>
+      </div>
+      <div class="srv-name">Dining Area</div>
+      <div class="srv-desc">Custom dining tables, accent lighting, crockery units & bar counters</div>
+    </div>
+
+    <!-- Balcony -->
+    <div class="srv-card reveal" style="transition-delay:.30s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 17H21M7 17V21M17 17V21"/><path d="M8 7H16M8 11H12"/></svg>
+      </div>
+      <div class="srv-name">Balcony & Outdoor</div>
+      <div class="srv-desc">Deck flooring, pergolas, outdoor seating, planters & privacy screens</div>
+    </div>
+
+    <!-- Study -->
+    <div class="srv-card reveal" style="transition-delay:.06s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10H21M7 15H9M13 15H17"/></svg>
+      </div>
+      <div class="srv-name">Study & Office</div>
+      <div class="srv-desc">Ergonomic workspaces, bookshelves, cable management & ambient zones</div>
+    </div>
+
+    <!-- Kids Room -->
+    <div class="srv-card reveal" style="transition-delay:.12s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2ZM9.5 9H10.5L12 11L13.5 9H14.5L12.5 12.5V15H11.5V12.5L9.5 9Z"/></svg>
+      </div>
+      <div class="srv-name">Kids Room</div>
+      <div class="srv-desc">Fun, safe, colourful spaces with themed designs, loft beds & play zones</div>
+    </div>
+
+    <!-- Pooja -->
+    <div class="srv-card reveal" style="transition-delay:.18s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z"/></svg>
+      </div>
+      <div class="srv-name">Pooja & Prayer</div>
+      <div class="srv-desc">Sacred spaces with mandap units, carved woodwork & devotional lighting</div>
+    </div>
+
+    <!-- False Ceiling -->
+    <div class="srv-card reveal" style="transition-delay:.24s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 5H22M5 5V19M19 5V19M2 19H22"/><circle cx="12" cy="12" r="3"/><path d="M12 9V5M12 19V15M9 12H5M19 12H15"/></svg>
+      </div>
+      <div class="srv-name">Ceilings & Lighting</div>
+      <div class="srv-desc">Gypsum, POP, wooden ceilings with chandeliers, coves & smart lighting</div>
+    </div>
+
+    <!-- Flooring -->
+    <div class="srv-card reveal" style="transition-delay:.30s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg>
+      </div>
+      <div class="srv-name">Flooring</div>
+      <div class="srv-desc">Marble, hardwood, vitrified, SPC & Italian stone flooring solutions</div>
+    </div>
+
+    <!-- Commercial -->
+    <div class="srv-card reveal" style="transition-delay:.36s">
+      <div class="srv-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M16 3V21M8 3V21M2 9H8M2 15H8M16 9H22M16 15H22"/></svg>
+      </div>
+      <div class="srv-name">Commercial Space</div>
+      <div class="srv-desc">Offices, retail, clinics & restaurants designed for brand and function</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECOND MARQUEE (reversed) -->
+<div class="marquee-wrap">
+  <div class="marquee-track" style="animation-direction:reverse;animation-duration:28s">
+    <span class="mq-item">Wardrobe Design <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Pooja Room <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Kids Bedroom <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Home Theatre <span class="mq-dot">◆</span></span>
+    <span class="mq-item">False Ceiling <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Marble Flooring <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Smart Homes <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Luxury Villas <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Wardrobe Design <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Pooja Room <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Kids Bedroom <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Home Theatre <span class="mq-dot">◆</span></span>
+    <span class="mq-item">False Ceiling <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Marble Flooring <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Smart Homes <span class="mq-dot">◆</span></span>
+    <span class="mq-item">Luxury Villas <span class="mq-dot">◆</span></span>
+  </div>
+</div>
+
+<!-- FEATURED PROJECTS -->
+<section id="featured">
+  <div class="feat-header">
+    <div>
+      <div class="gold-tag reveal">Selected Work</div>
+      <h2 class="section-title reveal" style="transition-delay:.08s">Featured <em>Projects</em></h2>
+    </div>
+    <div class="right reveal" style="transition-delay:.12s">
+      <a href="all-projects.html" class="view-all-btn">View All Projects →</a>
+    </div>
+  </div>
+
+  <div class="feat-grid">
+    <!-- Large card -->
+    <div class="feat-card reveal">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=85&auto=format&fit=crop" alt="The Serene Villa"/>
+      <div class="feat-card-inner">
+        <div class="feat-cat">Residential · Koramangala</div>
+        <div class="feat-name">The Serene Villa</div>
+        <div class="feat-meta">4,200 sq.ft · 4 BHK · 2024</div>
+        <a class="feat-link">View Project →</a>
+      </div>
+    </div>
+
+    <!-- Right column: 2 stacked -->
+    <div class="feat-col-right" style="grid-column:2 / span 2;">
+      <div class="feat-card reveal" style="transition-delay:.1s">
+        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=85&auto=format&fit=crop" alt="Atelier Kitchen"/>
+        <div class="feat-card-inner">
+          <div class="feat-cat">Residential · Whitefield</div>
+          <div class="feat-name">Skyline Penthouse</div>
+          <div class="feat-meta">6,100 sq.ft · Luxury · 2024</div>
+          <a class="feat-link">View Project →</a>
+        </div>
+      </div>
+      <div class="feat-card reveal" style="transition-delay:.18s">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=85&auto=format&fit=crop" alt="The Golden Fork"/>
+        <div class="feat-card-inner">
+          <div class="feat-cat">Hospitality · HSR Layout</div>
+          <div class="feat-name">The Golden Fork Restaurant</div>
+          <div class="feat-meta">3,200 sq.ft · 180 covers · 2023</div>
+          <a class="feat-link">View Project →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PORTFOLIO -->
+<section id="design-portfolio">
+  <div class="dp-header">
+    <div class="gold-tag reveal" style="justify-content:center">Design Portfolio</div>
+    <h2 class="section-title reveal" style="transition-delay:.08s">Interior <em>Details</em> that Define Spaces</h2>
+    <p class="section-sub reveal" style="transition-delay:.14s">A curated collection of materials, moods and moments from our most celebrated projects.</p>
+  </div>
+  <div class="dp-grid">
+    <div class="dp-item reveal">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&q=85&auto=format&fit=crop" alt="Bespoke Kitchen"/>
+      <div class="dp-overlay"></div>
+      <div class="dp-label"><div class="dp-lcat">Kitchen</div><div class="dp-lname">Bespoke Kitchen Design</div></div>
+    </div>
+    <div class="dp-item reveal" style="transition-delay:.08s">
+      <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=500&q=85&auto=format&fit=crop" alt="Master Bedroom"/>
+      <div class="dp-overlay"></div>
+      <div class="dp-label"><div class="dp-lcat">Bedroom</div><div class="dp-lname">Master Bedroom Suite</div></div>
+    </div>
+    <div class="dp-item reveal" style="transition-delay:.16s">
+      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&q=85&auto=format&fit=crop" alt="Spa Bathroom"/>
+      <div class="dp-overlay"></div>
+      <div class="dp-label"><div class="dp-lcat">Bathroom</div><div class="dp-lname">Luxury Spa Bathroom</div></div>
+    </div>
+    <div class="dp-item reveal" style="transition-delay:.24s">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&q=85&auto=format&fit=crop" alt="Living Room"/>
+      <div class="dp-overlay"></div>
+      <div class="dp-label"><div class="dp-lcat">Living</div><div class="dp-lname">Contemporary Living Room</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS -->
+<section id="materials">
+  <div class="mat-layout">
+    <div class="mat-left">
+      <div class="mat-header">
+        <div class="gold-tag reveal">Our Material Library</div>
+        <h2 class="section-title reveal" style="transition-delay:.08s">Premium Materials,<br><em>Sourced Globally</em></h2>
+        <p class="section-sub reveal" style="transition-delay:.14s;max-width:420px;">We work exclusively with verified premium materials — from Italian marble to German hardware — because lasting beauty begins with what you build with.</p>
+      </div>
+      <div class="mat-list">
+        <div class="mat-row reveal">
+          <div class="mat-row-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="mat-row-body">
+            <div class="mat-row-name">Stone & Marble</div>
+            <div class="mat-row-brands">Carrara, Calacatta, Black Marquina · Italian & Indian quarries</div>
+          </div>
+        </div>
+        <div class="mat-row reveal" style="transition-delay:.06s">
+          <div class="mat-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 3H19A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3Z"/><path d="M3 9H21M3 15H21M9 3V21M15 3V21"/></svg>
+          </div>
+          <div class="mat-row-body">
+            <div class="mat-row-name">Wood & Veneer</div>
+            <div class="mat-row-brands">Century Ply, Greenply, Merino · ISI certified boards & solid teak</div>
+          </div>
+        </div>
+        <div class="mat-row reveal" style="transition-delay:.12s">
+          <div class="mat-row-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3C12 3 16 8 16 12C16 16 12 21 12 21C12 21 8 16 8 12C8 8 12 3 12 3Z"/><path d="M3 12H21"/></svg>
+          </div>
+          <div class="mat-row-body">
+            <div class="mat-row-name">Tiles & Ceramics</div>
+            <div class="mat-row-brands">Kajaria, Somany, Johnson, RAK Ceramics · Indian & UAE imports</div>
+          </div>
+        </div>
+        <div class="mat-row reveal" style="transition-delay:.18s">
+          <div class="mat-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 3H5A2 2 0 0 0 3 5V9M9 3H15M9 3V9M15 3H19A2 2 0 0 1 21 5V9M15 3V9M21 9V15M21 15V19A2 2 0 0 1 19 21H15M21 15H15M15 21H9M15 21V15M9 21H5A2 2 0 0 1 3 19V15M9 21V15M3 15V9M3 9H9M9 9H15M15 9H21M9 15H3M9 15H15M15 15H21"/></svg>
+          </div>
+          <div class="mat-row-body">
+            <div class="mat-row-name">Hardware & Fittings</div>
+            <div class="mat-row-brands">Hafele, Hettich, Blum · German engineered hinges, channels & handles</div>
+          </div>
+        </div>
+        <div class="mat-row reveal" style="transition-delay:.24s">
+          <div class="mat-row-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2V4M12 20V22M4.93 4.93L6.34 6.34M17.66 17.66L19.07 19.07M2 12H4M20 12H22M4.93 19.07L6.34 17.66M17.66 6.34L19.07 4.93"/></svg>
+          </div>
+          <div class="mat-row-body">
+            <div class="mat-row-name">Lighting Systems</div>
+            <div class="mat-row-brands">Philips Hue, Havells, Legrand · Smart LED, chandeliers & cove systems</div>
+          </div>
+        </div>
+        <div class="mat-row reveal" style="transition-delay:.30s">
+          <div class="mat-row-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"/><path d="M12 8V16M8 12H16"/></svg>
+          </div>
+          <div class="mat-row-body">
+            <div class="mat-row-name">Paints & Textures</div>
+            <div class="mat-row-brands">Asian Paints, Berger, Dulux · 5000+ shades, texture & metallic finishes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mat-right reveal" style="transition-delay:.2s">
+      <div class="mat-img-grid">
+        <div class="mat-img tall">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85&auto=format&fit=crop" alt="Premium material"/>
+          <div class="mat-cap">Italian Marble · Calacatta</div>
+        </div>
+        <div class="mat-img">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=85&auto=format&fit=crop" alt="Wood veneer"/>
+          <div class="mat-cap">Teak Veneer · Century Ply</div>
+        </div>
+        <div class="mat-img">
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=85&auto=format&fit=crop" alt="Lighting detail"/>
+          <div class="mat-cap">Bespoke Lighting · Havells</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="pkg-header">
+    <div class="gold-tag reveal" style="justify-content:center">Transparent Pricing</div>
+    <h2 class="section-title reveal" style="transition-delay:.08s">Choose Your <em>Package</em></h2>
+    <p class="section-sub reveal" style="transition-delay:.14s">Every package is a starting point — we customise every detail to match your vision and budget exactly.</p>
+  </div>
+  <div class="pkg-grid">
+
+    <!-- Essential -->
+    <div class="pkg-card reveal">
+      <div class="pkg-badge">Essential</div>
+      <div class="pkg-name">Classic Home</div>
+      <div class="pkg-sub">Perfect for 1–2 BHK apartments</div>
+      <div class="pkg-price">₹999</div>
+      <div class="pkg-unit">per sq.ft · all-inclusive</div>
+      <ul class="pkg-features">
+        <li>Full interior design consultation</li>
+        <li>Modular kitchen with standard fittings</li>
+        <li>2 bedrooms with wardrobes</li>
+        <li>Living & dining area design</li>
+        <li>ISI certified plywood throughout</li>
+        <li>Standard hardware (Godrej / Ebco)</li>
+        <li>3D design visualisation</li>
+        <li>45-day delivery commitment</li>
+      </ul>
+      <button class="pkg-cta">Get a Quote →</button>
+    </div>
+
+    <!-- Premium (featured) -->
+    <div class="pkg-card featured reveal" style="transition-delay:.1s">
+      <div class="pkg-badge">⭐ Most Popular</div>
+      <div class="pkg-name">Premium Home</div>
+      <div class="pkg-sub">Ideal for 3 BHK & villas</div>
+      <div class="pkg-price">₹1,699</div>
+      <div class="pkg-unit">per sq.ft · all-inclusive</div>
+      <ul class="pkg-features">
+        <li>Dedicated senior designer assigned</li>
+        <li>Modular kitchen with Hafele / Hettich fittings</li>
+        <li>All bedrooms with premium wardrobes</li>
+        <li>Pooja room, balcony & study unit</li>
+        <li>Century / Greenply plywood</li>
+        <li>False ceiling with cove lighting</li>
+        <li>VR walkthrough before execution</li>
+        <li>60-day delivery with weekly updates</li>
+      </ul>
+      <button class="pkg-cta">Get a Quote →</button>
+    </div>
+
+    <!-- Luxury -->
+    <div class="pkg-card reveal" style="transition-delay:.18s">
+      <div class="pkg-badge">Luxury</div>
+      <div class="pkg-name">Bespoke Villa</div>
+      <div class="pkg-sub">For luxury villas & penthouses</div>
+      <div class="pkg-price">₹2,799</div>
+      <div class="pkg-unit">per sq.ft · fully custom</div>
+      <ul class="pkg-features">
+        <li>Director-level personal design lead</li>
+        <li>Italian / German kitchen fittings (Blum)</li>
+        <li>Custom furniture & upholstery</li>
+        <li>Imported stone, marble & wood floors</li>
+        <li>Smart home integration (Philips Hue)</li>
+        <li>Art curation & luxury styling</li>
+        <li>Dedicated site manager on-site daily</li>
+        <li>1-year full aftercare warranty</li>
+      </ul>
+      <button class="pkg-cta">Get a Quote →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="proj-stats">
+  <div class="ps-grid">
+    <div class="ps-item reveal"><div class="ps-num" data-count="500" data-suffix="+">0</div><div class="ps-lbl">Projects Delivered</div></div>
+    <div class="ps-item reveal" style="transition-delay:.1s"><div class="ps-num" data-count="48" data-suffix="+">0</div><div class="ps-lbl">Design Awards</div></div>
+    <div class="ps-item reveal" style="transition-delay:.2s"><div class="ps-num" data-count="32" data-suffix="+">0</div><div class="ps-lbl">Cities Covered</div></div>
+    <div class="ps-item reveal" style="transition-delay:.3s"><div class="ps-num" data-count="98" data-suffix="%">0</div><div class="ps-lbl">On-Time Delivery</div></div>
+    <div class="ps-item reveal" style="transition-delay:.4s"><div class="ps-num" data-count="4.9" data-suffix="★">0</div><div class="ps-lbl">Google Rating</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="contact-footer">
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="ft-logo-wrap">
+        <div class="nav-logo-diamond" style="width:10px;height:10px"></div>
+        <div>
+          <div class="ft-logo-name-text">Concept Decors</div>
+          <div class="ft-logo-city">Bengaluru · Est. 2012</div>
+        </div>
+      </div>
+      <p class="ft-desc">Bengaluru's premier luxury interior design studio — crafting spaces that inspire, delight and endure.</p>
+      <div class="ft-socials">
+        <a class="ft-soc" href="#">ig</a>
+        <a class="ft-soc" href="#">in</a>
+        <a class="ft-soc" href="#">yt</a>
+        <a class="ft-soc" href="#">fb</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="all-projects.html">All Projects</a></li>
+        <li><a href="factory.html">Factory</a></li>
+        <li><a href="team.html">Our Team</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Residential</a></li>
+        <li><a href="#">Commercial</a></li>
+        <li><a href="#">Hospitality</a></li>
+        <li><a href="#">Custom Furniture</a></li>
+        <li><a href="#">Modular Kitchens</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Reach Us</h4>
+      <ul>
+        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+        <li><a href="mailto:hello@conceptdecors.in">hello@conceptdecors.in</a></li>
+        <li><a>Indiranagar, Bengaluru</a></li>
+        <li><a href="#">Mon – Sat · 9AM–7PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2025 Concept Decors. All rights reserved.</div>
+    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<!-- STICKY ICONS -->
+<div class="sticky-icons">
+  <a class="si-item si-wa" href="https://wa.me/919876543210" target="_blank" rel="noopener">
+    <div class="si-icon-box">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </div>
+    <span class="si-label">WhatsApp</span>
+  </a>
+  <a class="si-item si-ph" href="tel:+919876543210">
+    <div class="si-icon-box">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.4 2 2 0 0 1 3.9 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </div>
+    <span class="si-label">Call Now</span>
+  </a>
+</div>
+
+<script>
+/* ── NAV ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('solid',window.scrollY>60);
+},{passive:true});
+
+function toggleMenu(){
+  document.getElementById('mob-menu').classList.toggle('open');
+}
+
+/* ── SCROLL REVEAL ── */
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.07,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+function animateCount(el){
+  const target = parseFloat(el.dataset.count);
+  const suffix = el.dataset.suffix||'';
+  const isDecimal = target%1!==0;
+  const duration = 1600;
+  const start = performance.now();
+  function frame(now){
+    const p = Math.min((now-start)/duration,1);
+    const ease = 1-Math.pow(1-p,3);
+    const val = target*ease;
+    el.textContent = (isDecimal?val.toFixed(1):Math.round(val))+suffix;
+    if(p<1)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+const countObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      animateCount(e.target);
+      countObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.4});
+document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
+</script>
+</body>
+</html>
